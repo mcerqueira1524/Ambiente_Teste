@@ -1,0 +1,16 @@
+# Requisitos para rodar no Streamlit Cloud
+
+plotly.express
+matplotlib
+numpy
+openpyxl
+pandas
+streamlit-authenticator
+PyJWT
+bcrypt
+PyYAML
+extra-streamlit-components
+pdfkit
+pyxlsb==1.0.9
+XlsxWriter
+st-pages
