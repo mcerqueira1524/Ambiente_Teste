@@ -147,6 +147,7 @@ if check_password():
     ###### AJUSTAR DAQUI PARA BAIXO ######
 
     df_olimp = importar_olimp()
+    df_olimp_teste = importar_olimp_teste()
     df_quinzenal = importar_tutoria()
 
     #merge com as tabelas fato
@@ -202,7 +203,7 @@ if check_password():
     df_selection = df_dash360_ativo.query("Tipo == @tipo & Praça == @praca & Tutor == @tutor")
     df_selection_total = df_dash360_total.query("Tipo == @tipo & Praça == @praca & Tutor == @tutor") #esse df é para o gráfico de status
     df_dash2022 = df_dash2022.query("Tipo == @tipo & Praça == @praca & Tutor == @tutor") #[[AJUSTAR]]
-
+    df_olimp_teste = df_olimp_teste.query("Tipo == @tipo & Praça == @praca & Tutor == @tutor")
     #Título
     st.title("Dash 360 Ismart Online 2023")
     st.markdown("##")
@@ -1184,6 +1185,7 @@ if check_password():
         st.plotly_chart(fig_pu_2_enemp,use_container_width=True)
     with tab2:
         st.write('Testando')
+        st.dataframe(df_olimp_teste)
     with tab3:
 
         df_alunos_medalhas = df_selection.loc[(df_selection['Me inscrevi e estou aguardando resultados'].notnull() & (df_selection['Me inscrevi e estou aguardando resultados'] != 0)& (df_selection['Me inscrevi e estou aguardando resultados'] != "-")) 
