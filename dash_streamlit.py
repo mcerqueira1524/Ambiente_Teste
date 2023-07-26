@@ -64,7 +64,8 @@ def check_password():
 
 if check_password():
     #limpar o cache e atualizar as planilhas
-    #@st.cache_data.clear()
+    
+    @st.cache_data.clear()
 
     #importando dash 360 de 2022 [[AJUSTAR]]
     @st.cache_data
@@ -204,6 +205,7 @@ if check_password():
     df_selection_total = df_dash360_total.query("Tipo == @tipo & Praça == @praca & Tutor == @tutor") #esse df é para o gráfico de status
     df_dash2022 = df_dash2022.query("Tipo == @tipo & Praça == @praca & Tutor == @tutor") #[[AJUSTAR]]
     df_selection_olimp_teste =  df_olimp_teste.query("Tipo == @tipo & Praça == @praca & Tutor == @tutor")
+
     #Título
     st.title("Dash 360 Ismart Online 2023")
     st.markdown("##")
