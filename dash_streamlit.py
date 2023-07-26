@@ -1186,8 +1186,22 @@ if check_password():
 
         st.plotly_chart(fig_pu_2_enemp,use_container_width=True)
     with tab2:
-        st.write('Testando')
-        st.dataframe(df_selection_olimp_teste)
+        st.write('Por padrão os dados abaixo consideram o ano de 2022 e 2023, caso queira analisar cada ano específicamente basta fazer o filtro abaixo.')
+        st.write('Vale ressaltar que quanto aos dados de 2022 estamos falando de alunos ativos na época, ou seja vai aparecer dados de alunos ativos em dezembro de 2022 que foram desligados durante 2023 por exemplo.')
+
+        col1,espaco1,col2 = st.columns([1,1,1])
+        with col1:
+            select = st.selectbox(
+                "Selecione o ano:",
+                options=['2023','2022'],
+                help = 'Escolha qual ano você gostaria de visualizar os dados'
+                )
+            if select == '2023':
+                df_selection_olimp_teste = df_selection_olimp_teste[df_selection_olimp_teste['Ano'] == 2023]
+            elif select == '2022':
+                df_selection_olimp_teste = df_selection_olimp_teste[df_selection_olimp_teste['Ano'] == 2022]
+            else:
+                st.write('Selecione algum ano')
     with tab3:
 
         df_alunos_medalhas = df_selection.loc[(df_selection['Me inscrevi e estou aguardando resultados'].notnull() & (df_selection['Me inscrevi e estou aguardando resultados'] != 0)& (df_selection['Me inscrevi e estou aguardando resultados'] != "-")) 
