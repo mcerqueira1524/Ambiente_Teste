@@ -1187,7 +1187,7 @@ if check_password():
         st.plotly_chart(fig_pu_2_enemp,use_container_width=True)
     with tab2:
         st.write('Testando')
-        st.dataframe(df_olimp_teste)
+        st.dataframe(df_selection_olimp_teste)
     with tab3:
 
         df_alunos_medalhas = df_selection.loc[(df_selection['Me inscrevi e estou aguardando resultados'].notnull() & (df_selection['Me inscrevi e estou aguardando resultados'] != 0)& (df_selection['Me inscrevi e estou aguardando resultados'] != "-")) 
