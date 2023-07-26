@@ -1025,7 +1025,7 @@ if check_password():
 
     #inserir tab de engajamento geral a posteriori
     ####### TABS
-    tab1,tab3,tab4,tab5 = st.tabs(['Prova Única','Olimpíadas','Acompanhamento Quinzenal', 'Khan Academy'])
+    tab1,tab2, tab3,tab4,tab5= st.tabs(['Prova Única','Teste Olimpiadas','Olimpíadas','Acompanhamento Quinzenal', 'Khan Academy' ])
     with tab1:
         col1,col2=st.columns(2,gap='small')
         with col1:
@@ -1177,7 +1177,8 @@ if check_password():
         fig_pu_2_enemp.update_yaxes(visible=False)
 
         st.plotly_chart(fig_pu_2_enemp,use_container_width=True)
-
+    with tab2:
+        st.write('Testando')
     with tab3:
 
         df_alunos_medalhas = df_selection.loc[(df_selection['Me inscrevi e estou aguardando resultados'].notnull() & (df_selection['Me inscrevi e estou aguardando resultados'] != 0)& (df_selection['Me inscrevi e estou aguardando resultados'] != "-")) 
