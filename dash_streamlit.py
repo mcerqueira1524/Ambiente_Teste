@@ -133,6 +133,11 @@ if check_password():
     def importar_olimp():
         df_olimp = pd.read_excel(r"Olimpiadas_Tratado.xlsx")
         return df_olimp
+    
+    @st.cache_data
+    def importar_olimp_teste():
+        df_olimp_teste = pd.read_excel(r"teste_olimpiadas.xlsx")
+        return df_olimp_teste
 
     @st.cache_data
     def importar_tutoria():
