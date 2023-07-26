@@ -15,12 +15,12 @@ st.set_page_config(page_title = "Dash 360 IOL 2023", layout="wide", initial_side
 
 show_pages(
     [
-        Page("pages/leia_me.py", "Leia Me", ":books:"),
+        Page("leia_me.py", "Leia Me", ":books:"),
         #Page("pages/painel_metas.py", "Painel de Metas", ":dart:"), [[AJUSTAR]]
         Page("dash_streamlit.py", "Dash Macro", ":bar_chart:"),
-        Page("pages/dash_micro.py", "Dash Micro", ":female-student:"),
-        Page("pages/filtro_base.py", "Filtro e Download Base", ":pushpin:"),
-        Page("pages/one_page.py", "Informações Gerais e Históricas", ":1234:"),
+        Page("dash_micro.py", "Dash Micro", ":female-student:"),
+        Page("filtro_base.py", "Filtro e Download Base", ":pushpin:"),
+        Page("one_page.py", "Informações Gerais e Históricas", ":1234:"),
     ]
 )
 
