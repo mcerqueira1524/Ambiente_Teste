@@ -51,7 +51,7 @@ def check_password():
 
 if check_password():
 
-    @st.cache_data.clear()
+    #@st.cache_data.clear()
 
     @st.cache_data
     def importar_dash360():
