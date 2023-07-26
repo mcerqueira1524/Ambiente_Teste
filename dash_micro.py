@@ -50,7 +50,7 @@ def check_password():
 
 if check_password():
     #limpar o cache e atualizar as planilhas
-    #@st.cache_data.clear()
+    @st.cache_data.clear()
     
     #importando o Dash 360
     @st.cache_data
