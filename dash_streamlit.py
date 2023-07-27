@@ -1197,7 +1197,7 @@ if check_password():
 
         tabela_medalhistas_serie=  medalhistas_unicos.groupby('Selecione a sua série:')['Ano'].value_counts().unstack(fill_value=0)
         tabela_medalhistas_serie = tabela_medalhistas_serie.rename_axis(None, axis=1)
-        tabela_medalhistas_serie = gtabela_medalhistas_serie.reset_index()
+        tabela_medalhistas_serie = tabela_medalhistas_serie.reset_index()
 
         fig_olimp_medalhistas = px.bar(
             tabela_medalhistas_serie,
