@@ -1225,6 +1225,7 @@ if check_password():
 
         fig_olimp_medalhistas.update_yaxes(visible=False)
 
+        st.plotly_chart(fig_olimp_medalhistas,use_container_width=True)
 
     with tab3:
 
