@@ -1191,9 +1191,13 @@ if check_password():
 
         col1,espaco1,col2 = st.columns([1,1,1])
 
-        grafico_barras = medalhistas_unicos.groupby('Selecione a sua série:')['Ano'].value_counts().unstack(fill_value=0)
-        grafico_barras = grafico_barras.rename_axis(None, axis=1)
-        grafico_barras = grafico_barras.reset_index()
+        medalhistas_unicos = bd_olimpiadas[(bd_olimpiadas['Medalhas acadêmicas'] != "")]
+        medalhistas_unicos = medalhistas_unicos.drop_duplicates(['ID'])
+
+
+        tabela_medalhistas_serie= medalhistas_unicos.groupby('Selecione a sua série:')['Ano'].value_counts().unstack(fill_value=0)
+        tabela_medalhistas_serie = grafico_barras.rename_axis(None, axis=1)
+        tabela_medalhistas_serie = grafico_barras.reset_index()
 
         fig_olimp_medalhistas = px.bar(
             grafico_barras,
