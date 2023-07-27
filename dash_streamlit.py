@@ -1191,7 +1191,7 @@ if check_password():
 
         col1,espaco1,col2 = st.columns([1,1,1])
 
-        medalhistas_unicos = bd_olimpiadas[(bd_olimpiadas['Medalhas acadêmicas'] != "")]
+        medalhistas_unicos = bd_olimpiadas[(df_selection_olimp_teste['Medalhas acadêmicas'] != "")]
         medalhistas_unicos = medalhistas_unicos.drop_duplicates(['ID'])
 
 
