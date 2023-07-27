@@ -1190,18 +1190,38 @@ if check_password():
         st.write('Vale ressaltar que quanto aos dados de 2022 estamos falando de alunos ativos na época, ou seja vai aparecer dados de alunos ativos em dezembro de 2022 que foram desligados durante 2023 por exemplo.')
 
         col1,espaco1,col2 = st.columns([1,1,1])
-        with col1:
-            select = st.selectbox(
-                "Selecione o ano:",
-                options=['2023','2022'],
-                help = 'Escolha qual ano você gostaria de visualizar os dados'
-                )
-            if select == '2023':
-                df_selection_olimp_teste = df_selection_olimp_teste[df_selection_olimp_teste['Ano'] == 2023]
-            elif select == '2022':
-                df_selection_olimp_teste = df_selection_olimp_teste[df_selection_olimp_teste['Ano'] == 2022]
-            else:
-                st.write('Selecione algum ano')
+
+        grafico_barras = medalhistas_unicos.groupby('Selecione a sua série:')['Ano'].value_counts().unstack(fill_value=0)
+        grafico_barras = grafico_barras.rename_axis(None, axis=1)
+        grafico_barras = grafico_barras.reset_index()
+
+        fig_olimp_medalhistas = px.bar(
+            grafico_barras,
+            x='Selecione a sua série:', 
+            y=[2022, 2023],     
+            color_discrete_map= {'2022':'#EE2D67', '2023':'#8EC6B2'},
+            barmode='group',
+            category_orders={'Selecione a sua série:':cols_form},
+            template = template_dash)
+
+        fig_formacao_hist.update_layout(
+            showlegend=True,
+            xaxis_title="Série",
+            yaxis_title="Medalhistas",
+            plot_bgcolor=bg_color_dash,
+            title={
+                'text': "<b> Quantidade de alunos medalhistas por série em cada ano </b>",
+                'y':0.9,
+                'x':0.5,
+                'xanchor': 'center',
+                'yanchor': 'top'
+            }
+        )
+        fig_olimp_medalhistas.update_traces(texttemplate='%{y}%', textposition='inside',textfont_size=15)
+
+        fig_olimp_medalhistas.update_yaxes(visible=False)
+
+
     with tab3:
 
         df_alunos_medalhas = df_selection.loc[(df_selection['Me inscrevi e estou aguardando resultados'].notnull() & (df_selection['Me inscrevi e estou aguardando resultados'] != 0)& (df_selection['Me inscrevi e estou aguardando resultados'] != "-")) 
