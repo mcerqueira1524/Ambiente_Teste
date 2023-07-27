@@ -1195,12 +1195,12 @@ if check_password():
         medalhistas_unicos = medalhistas_unicos.drop_duplicates(['ID'])
 
 
-        tabela_medalhistas_serie= medalhistas_unicos.groupby('Selecione a sua série:')['Ano'].value_counts().unstack(fill_value=0)
-        tabela_medalhistas_serie = grafico_barras.rename_axis(None, axis=1)
-        tabela_medalhistas_serie = grafico_barras.reset_index()
+        tabela_medalhistas_serie=  medalhistas_unicos.groupby('Selecione a sua série:')['Ano'].value_counts().unstack(fill_value=0)
+        tabela_medalhistas_serie = tabela_medalhistas_serie.rename_axis(None, axis=1)
+        tabela_medalhistas_serie = gtabela_medalhistas_serie.reset_index()
 
         fig_olimp_medalhistas = px.bar(
-            grafico_barras,
+            tabela_medalhistas_serie,
             x='Selecione a sua série:', 
             y=[2022, 2023],     
             color_discrete_map= {'2022':'#EE2D67', '2023':'#8EC6B2'},
@@ -1208,7 +1208,7 @@ if check_password():
             category_orders={'Selecione a sua série:':cols_form},
             template = template_dash)
 
-        fig_formacao_hist.update_layout(
+        fig_olimp_medalhistas.update_layout(
             showlegend=True,
             xaxis_title="Série",
             yaxis_title="Medalhistas",
