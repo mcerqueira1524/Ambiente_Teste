@@ -1205,6 +1205,7 @@ if check_password():
             y=[2022, 2023],     
             color_discrete_map= {'2022':'#EE2D67', '2023':'#8EC6B2'},
             barmode='group',
+            text = 'Ano',
             category_orders={'Selecione a sua série:':cols_form},
             template = template_dash)
 
@@ -1214,14 +1215,13 @@ if check_password():
             yaxis_title="Medalhistas",
             plot_bgcolor=bg_color_dash,
             title={
-                'text': "<b> Quantidade de alunos medalhistas por série em cada ano </b>",
+                'text': "<b> QUANTIDADE DE ALUNOS MEDALHISTAS POR SÉRIE EM CADA ANO </b>",
                 'y':0.9,
                 'x':0.5,
                 'xanchor': 'center',
                 'yanchor': 'top'
             }
         )
-        fig_olimp_medalhistas.update_traces(texttemplate='%{y}%', textposition='inside',textfont_size=15)
 
         fig_olimp_medalhistas.update_yaxes(visible=False)
 
