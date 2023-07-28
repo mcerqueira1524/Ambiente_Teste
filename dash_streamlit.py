@@ -64,7 +64,6 @@ def check_password():
 
 if check_password():
     #limpar o cache e atualizar as planilhas
-
     #@st.cache_data.clear()
 
     #importando dash 360 de 2022 [[AJUSTAR]]
