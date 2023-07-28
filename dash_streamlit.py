@@ -1190,7 +1190,7 @@ if check_password():
 
         col1,espaco1,col2 = st.columns([1,1,1])
 
-        medalhistas_unicos = df_selection_olimp_teste[(df_selection_olimp_teste['Medalhas acadêmicas'] != "")]
+        medalhistas_unicos = df_selection_olimp_teste[(df_selection_olimp_teste['Medalhas acadêmicas'] !=  None)]
         medalhistas_unicos = medalhistas_unicos.drop_duplicates(['ID'])
 
         st.dataframe(df_selection_olimp_teste)
