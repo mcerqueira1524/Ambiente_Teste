@@ -52,7 +52,7 @@ def check_password():
         
 if check_password():
 
-    @st.cache_data_clear()
+    #@st.cache_data_clear()
 
     @st.cache_data
     def importar_pu(): #PU
