@@ -1199,13 +1199,20 @@ if check_password():
         tabela_medalhistas_serie = tabela_medalhistas_serie.rename_axis(None, axis=1)
         tabela_medalhistas_serie = tabela_medalhistas_serie.reset_index()
 
+        soma_coluna2 = tabela_medalhistas_serie[2022].sum()
+        soma_coluna3 = tabela_medalhistas_serie[2023].sum()
+        nova_linha = pd.DataFrame([['Total', soma_coluna2, soma_coluna3]], columns=tabela_medalhistas_serie.columns)
+
+        tabela_medalhistas_serie = pd.concat([tabela_medalhistas_serie, nova_linha], ignore_index=True)
+
+
         fig_olimp_medalhistas = px.bar(
             tabela_medalhistas_serie,
             x='Selecione a sua série:', 
             y=[2022, 2023],     
             color_discrete_map= {'2022':'#EE2D67', '2023':'#8EC6B2'},
             barmode='group',
-            category_orders={'Selecione a sua série:':['8ºEF', '9ºEF', '1ºEM','2ºEM','3ºEM']},
+            category_orders={'Selecione a sua série:':['8ºEF', '9ºEF', '1ºEM','2ºEM','3ºEM','Total']},
             template = template_dash)
 
         fig_olimp_medalhistas.update_layout(
