@@ -1205,7 +1205,8 @@ if check_password():
 
         tabela_medalhistas_serie = pd.concat([tabela_medalhistas_serie, nova_linha], ignore_index=True)
 
-        st.dataframe(tabela_medalhistas_serie)
+        st.dataframe(medalhistas_unicos)
+
         fig_olimp_medalhistas = px.bar(
             tabela_medalhistas_serie,
             x='Selecione a sua série:', 
