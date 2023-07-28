@@ -1209,7 +1209,7 @@ if check_password():
             y=[2022, 2023],     
             color_discrete_map= {'2022':'#EE2D67', '2023':'#8EC6B2'},
             barmode='group',
-            text_auto=True
+            text_auto=True,
             category_orders={'Selecione a sua série:':['8ºEF', '9ºEF', '1ºEM','2ºEM','3ºEM','Total']},
             template = template_dash)
 
