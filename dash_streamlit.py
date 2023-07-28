@@ -1190,7 +1190,8 @@ if check_password():
 
         col1,espaco1,col2 = st.columns([1,1,1])
 
-        medalhistas_unicos = df_selection_olimp_teste[(df_selection_olimp_teste['Medalhas acadêmicas'] != 'nan')]
+        #medalhistas_unicos = df_selection_olimp_teste[(df_selection_olimp_teste['Medalhas acadêmicas'] != 'nan')]
+        medalhistas_unicos = df_selection_olimp_teste.dropna(subset=['Medalhas acadêmicas'])
         medalhistas_unicos = medalhistas_unicos.drop_duplicates(['ID'])
 
         tabela_medalhistas_serie=  medalhistas_unicos.groupby('Selecione a sua série:')['Ano'].value_counts().unstack(fill_value=0)
