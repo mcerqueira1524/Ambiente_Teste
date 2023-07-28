@@ -1245,7 +1245,7 @@ if check_password():
                 olimp_status_por_ano,
                 x='Status da Inscrição', 
                 y=[2022, 2023],     
-                color_discrete_map= {'2022':'#EE2D67', '2023':'#8EC6B2'},
+                color_discrete_map= {'2022':'#D4EFFC', '2023':'#008ED4'},
                 barmode='group',
                 text_auto=True,
                 category_orders={'Status da Inscrição':['Inscrições', 'Finalistas', 'Menções Honrosas','Medalhas de Bronze','Medalhas de Prata','Medalhas de Ouro']},
