@@ -1230,52 +1230,37 @@ if check_password():
         st.plotly_chart(fig_olimp_medalhistas,use_container_width=True)
 
         #segunda linha
-        medalha_competicao = df_selection_olimp_teste.groupby(by=['Olimpíada', 'Status da Inscrição']).size().reset_index()
-        medalha_competicao['quantidade'] = medalha_competicao.loc[:,0]
-        medalha_competicao = medalha_competicao.sort_values(['quantidade'],ascending=False)
 
-        fig_medalha_competicao = px.bar(
-                medalha_competicao,
-                y="Olimpíada",
-                x="quantidade",
-                text = "quantidade",
-                color = "Status da Inscrição",
-                color_discrete_sequence = colors,
-                template = template_dash,
-                barmode='stack',
-                orientation = 'h',
-                height = 600
-            )
+        with col1:
+            olimp_status_por_ano = df_selection_olimp_teste[df_selection_olimp_teste['Status da Inscrição'] != 'Não inscrito']
+            olimp_status_por_ano  = olimp_status_por_ano.pivot_table(index='Status da Inscrição', columns='Ano', aggfunc='size', fill_value=0)
+            olimp_status_por_ano  = olimp_status_por_ano.reset_index()
 
-        fig_medalha_competicao.update_traces(texttemplate='%{x}',
-            textposition='inside',
-            textfont_size=11,
-            insidetextanchor = 'middle')
+            fig_olimp_status = px.bar(
+                olimp_status_por_ano,
+                x='Status da Inscrição', 
+                y=[2022, 2023],     
+                color_discrete_map= {'2022':'#EE2D67', '2023':'#8EC6B2'},
+                barmode='group',
+                text_auto=True,
+                category_orders={'Status da Inscrição':['Inscrito', 'Finalista', 'Menção Honrosa','Medalhista de Bronze','Medalhista de Prata','Medalhista de Ouro']},
+                template = template_dash)
 
-        fig_medalha_competicao.update_yaxes(tickangle=0) #tickfont=dict(size=9),)
-
-        fig_medalha_competicao.update_xaxes(visible=False)
-
-        fig_medalha_competicao.update_layout(yaxis=dict(autorange="reversed"), legend=dict(
-            xanchor="right",
-            x=0.99,
-            yanchor="top",
-            y=0.55
-            ))
-
-
-        fig_medalha_competicao.update_layout(
-            plot_bgcolor=bg_color_dash,
-            title={
-            'text': "<b> STATUS DE INSCRIÇÃO POR OLIMPÍADA </b>",
-            'y':0.95,
-            'x':0.5,
-            'xanchor': 'center',
-            'yanchor': 'top'
-            }
-            )
-        st.plotly_chart(fig_medalha_competicao,use_container_width=True)
-
+            fig_olimp_status.update_layout(
+                showlegend=True,
+                xaxis_title="Status",
+                yaxis_title="Quantidade",
+                plot_bgcolor=bg_color_dash,
+                title={
+                    'text': "<b> QUANTIDADE POR STATUS </b>",
+                    'y':0.9,
+                    'x':0.5,
+                    'xanchor': 'center',
+                    'yanchor': 'top'
+                }
+        )
+        fig_olimp_status.update_yaxes(visible=False)
+        st.plotly_chart(fig_olimp_status,use_container_width=True)
     with tab3:
 
         df_alunos_medalhas = df_selection.loc[(df_selection['Me inscrevi e estou aguardando resultados'].notnull() & (df_selection['Me inscrevi e estou aguardando resultados'] != 0)& (df_selection['Me inscrevi e estou aguardando resultados'] != "-")) 
