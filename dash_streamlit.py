@@ -1205,7 +1205,6 @@ if check_password():
             y=[2022, 2023],     
             color_discrete_map= {'2022':'#EE2D67', '2023':'#8EC6B2'},
             barmode='group',
-            color = False,
             category_orders={'Selecione a sua série:':cols_form},
             template = template_dash)
 
