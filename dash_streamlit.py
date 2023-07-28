@@ -1260,8 +1260,8 @@ if check_password():
                     'yanchor': 'top'
                 }
         )
-        fig_olimp_status.update_yaxes(visible=False)
-        st.plotly_chart(fig_olimp_status,use_container_width=True)
+            fig_olimp_status.update_yaxes(visible=False)
+            st.plotly_chart(fig_olimp_status,use_container_width=True)
     with tab3:
 
         df_alunos_medalhas = df_selection.loc[(df_selection['Me inscrevi e estou aguardando resultados'].notnull() & (df_selection['Me inscrevi e estou aguardando resultados'] != 0)& (df_selection['Me inscrevi e estou aguardando resultados'] != "-")) 
