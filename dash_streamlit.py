@@ -1190,10 +1190,9 @@ if check_password():
 
         col1,espaco1,col2 = st.columns([1,1,1])
 
-        medalhistas_unicos = df_selection_olimp_teste[(df_selection_olimp_teste['Medalhas acadêmicas'] !=  None)]
+        medalhistas_unicos = df_selection_olimp_teste[(df_selection_olimp_teste['Medalhas acadêmicas'] !=  'nan')]
         medalhistas_unicos = medalhistas_unicos.drop_duplicates(['ID'])
 
-        st.dataframe(df_selection_olimp_teste)
         tabela_medalhistas_serie=  medalhistas_unicos.groupby('Selecione a sua série:')['Ano'].value_counts().unstack(fill_value=0)
         tabela_medalhistas_serie = tabela_medalhistas_serie.rename_axis(None, axis=1)
         tabela_medalhistas_serie = tabela_medalhistas_serie.reset_index()
@@ -1203,8 +1202,6 @@ if check_password():
         nova_linha = pd.DataFrame([['Total', soma_coluna2, soma_coluna3]], columns=tabela_medalhistas_serie.columns)
 
         tabela_medalhistas_serie = pd.concat([tabela_medalhistas_serie, nova_linha], ignore_index=True)
-
-        st.dataframe(medalhistas_unicos)
 
         fig_olimp_medalhistas = px.bar(
             tabela_medalhistas_serie,
@@ -1232,6 +1229,9 @@ if check_password():
         fig_olimp_medalhistas.update_yaxes(visible=False)
         #fig_olimp_medalhistas.update_traces(texttemplate= '%{y}%', textposition='inside',textfont_size=15)
         st.plotly_chart(fig_olimp_medalhistas,use_container_width=True)
+
+
+
 
     with tab3:
 
