@@ -1227,11 +1227,54 @@ if check_password():
             }
         )
         fig_olimp_medalhistas.update_yaxes(visible=False)
-        #fig_olimp_medalhistas.update_traces(texttemplate= '%{y}%', textposition='inside',textfont_size=15)
         st.plotly_chart(fig_olimp_medalhistas,use_container_width=True)
 
+        #segunda linha
+        medalha_competicao = df_selection_olimp_teste.groupby(by=['Olimpíada', 'Status da Inscrição']).size().reset_index()
+        medalha_competicao['quantidade'] = medalha_competicao.loc[:,0]
+        medalha_competicao = medalha_competicao.sort_values(['quantidade'],ascending=False)
+
+        fig_medalha_competicao = px.bar(
+                medalha_competicao,
+                y="Olimpíada",
+                x="quantidade",
+                text = "quantidade",
+                color = "Status da Inscrição",
+                color_discrete_sequence = colors,
+                template = template_dash,
+                barmode='stack',
+                orientation = 'h',
+                height = 600
+            )
+
+        fig_medalha_competicao.update_traces(texttemplate='%{x}',
+            textposition='inside',
+            textfont_size=11,
+            insidetextanchor = 'middle')
+
+        fig_medalha_competicao.update_yaxes(tickangle=0) #tickfont=dict(size=9),)
+
+        fig_medalha_competicao.update_xaxes(visible=False)
+
+        fig_medalha_competicao.update_layout(yaxis=dict(autorange="reversed"), legend=dict(
+            xanchor="right",
+            x=0.99,
+            yanchor="top",
+            y=0.55
+            ))
 
 
+        fig_medalha_competicao.update_layout(
+            plot_bgcolor=bg_color_dash,
+            title={
+            'text': "<b> STATUS DE INSCRIÇÃO POR OLIMPÍADA </b>",
+            'y':0.95,
+            'x':0.5,
+            'xanchor': 'center',
+            'yanchor': 'top'
+            }
+            )
+        st.plotly_chart(fig_medalha_competicao,use_container_width=True)
 
     with tab3:
 
