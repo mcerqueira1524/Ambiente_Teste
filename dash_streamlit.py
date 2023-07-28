@@ -1234,8 +1234,12 @@ if check_password():
         
         with col1:
             olimp_status_por_ano = df_selection_olimp_teste[df_selection_olimp_teste['Status da Inscrição'] != 'Não inscrito']
-            olimp_status_por_ano  = olimp_status_por_ano.pivot_table(index='Status da Inscrição', columns='Ano', aggfunc='size', fill_value=0)
-            olimp_status_por_ano  = olimp_status_por_ano.reset_index()
+            olimp_status_por_ano = olimp_status_por_ano[olimp_status_por_ano['Status da Inscrição'] != 'Fui medalhista na olimpíada']
+            olimp_status_por_ano  = olimp_status_por_ano .pivot_table(index='Status da Inscrição', columns='Ano', aggfunc='size', fill_value=0)
+            olimp_status_por_ano  = olimp_status_por_ano .reset_index()
+            olimp_renomear_status = {'Inscrito': 'Inscrições', 'Finalista': 'Finalistas', 'Medalhista de Bronze':'Medalhas de Bronze','Medalhista de Prata':'Medalhas de Prata','Medalhista de Ouro':'Medalhas de Ouro','Menção Honrosa':'Menções Honrosas'}
+            olimp_status_por_ano['Status da Inscrição'] = olimp_status_por_ano['Status da Inscrição'].replace(olimp_renomear_status)
+           
 
             fig_olimp_status = px.bar(
                 olimp_status_por_ano,
