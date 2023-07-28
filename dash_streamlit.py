@@ -1188,7 +1188,7 @@ if check_password():
         st.write('Por padrão os dados abaixo consideram o ano de 2022 e 2023, caso queira analisar cada ano específicamente basta fazer o filtro abaixo.')
         st.write('Vale ressaltar que quanto aos dados de 2022 estamos falando de alunos ativos na época, ou seja vai aparecer dados de alunos ativos em dezembro de 2022 que foram desligados durante 2023 por exemplo.')
 
-        col1,espaco1,col2 = st.columns([1,1,1])
+        
 
         #medalhistas_unicos = df_selection_olimp_teste[(df_selection_olimp_teste['Medalhas acadêmicas'] != 'nan')]
         medalhistas_unicos = df_selection_olimp_teste.dropna(subset=['Medalhas acadêmicas'])
@@ -1230,7 +1230,8 @@ if check_password():
         st.plotly_chart(fig_olimp_medalhistas,use_container_width=True)
 
         #segunda linha
-
+        col1,col2=st.columns(2,gap='small')
+        
         with col1:
             olimp_status_por_ano = df_selection_olimp_teste[df_selection_olimp_teste['Status da Inscrição'] != 'Não inscrito']
             olimp_status_por_ano  = olimp_status_por_ano.pivot_table(index='Status da Inscrição', columns='Ano', aggfunc='size', fill_value=0)
