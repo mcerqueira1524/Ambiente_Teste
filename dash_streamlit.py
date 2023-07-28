@@ -1201,7 +1201,6 @@ if check_password():
         soma_coluna2 = tabela_medalhistas_serie[2022].sum()
         soma_coluna3 = tabela_medalhistas_serie[2023].sum()
         nova_linha = pd.DataFrame([['Total', soma_coluna2, soma_coluna3]], columns=tabela_medalhistas_serie.columns)
-
         tabela_medalhistas_serie = pd.concat([tabela_medalhistas_serie, nova_linha], ignore_index=True)
 
         fig_olimp_medalhistas = px.bar(
@@ -1210,7 +1209,7 @@ if check_password():
             y=[2022, 2023],     
             color_discrete_map= {'2022':'#EE2D67', '2023':'#8EC6B2'},
             barmode='group',
-            text = [2022,2023],
+            text_auto=True
             category_orders={'Selecione a sua série:':['8ºEF', '9ºEF', '1ºEM','2ºEM','3ºEM','Total']},
             template = template_dash)
 
