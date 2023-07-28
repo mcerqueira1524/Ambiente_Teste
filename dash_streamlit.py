@@ -1210,6 +1210,7 @@ if check_password():
             y=[2022, 2023],     
             color_discrete_map= {'2022':'#EE2D67', '2023':'#8EC6B2'},
             barmode='group',
+            text = [2022,2023],
             category_orders={'Selecione a sua série:':['8ºEF', '9ºEF', '1ºEM','2ºEM','3ºEM','Total']},
             template = template_dash)
 
@@ -1226,7 +1227,7 @@ if check_password():
                 'yanchor': 'top'
             }
         )
-        fig_olimp_medalhistas.update_yaxes(visible=False, showticklabels=False)
+        fig_olimp_medalhistas.update_yaxes(visible=False)
         fig_olimp_medalhistas.update_traces(texttemplate= '%{y}%', textposition='inside',textfont_size=15)
         st.plotly_chart(fig_olimp_medalhistas,use_container_width=True)
 
