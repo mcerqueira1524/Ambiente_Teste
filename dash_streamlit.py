@@ -203,7 +203,7 @@ if check_password():
     df_selection = df_dash360_ativo.query("Tipo == @tipo & Praça == @praca & Tutor == @tutor")
     df_selection_total = df_dash360_total.query("Tipo == @tipo & Praça == @praca & Tutor == @tutor") #esse df é para o gráfico de status
     df_dash2022 = df_dash2022.query("Tipo == @tipo & Praça == @praca & Tutor == @tutor") #[[AJUSTAR]]
-    df_selection_olimp_teste=  df_olimp_teste.query("Tipo == @tipo & Praça == @praca & Tutor == @tutor")
+    df_selection_olimp_teste =  df_olimp_teste.query("Tipo == @tipo & Praça == @praca & Tutor == @tutor")
 
     #Título
     st.title("Dash 360 Ismart Online 2023")
@@ -1193,7 +1193,7 @@ if check_password():
         medalhistas_unicos = df_selection_olimp_teste[(df_selection_olimp_teste['Medalhas acadêmicas'] != "")]
         medalhistas_unicos = medalhistas_unicos.drop_duplicates(['ID'])
 
-
+        st.dataframe(df_selection_olimp_teste)
         tabela_medalhistas_serie=  medalhistas_unicos.groupby('Selecione a sua série:')['Ano'].value_counts().unstack(fill_value=0)
         tabela_medalhistas_serie = tabela_medalhistas_serie.rename_axis(None, axis=1)
         tabela_medalhistas_serie = tabela_medalhistas_serie.reset_index()
