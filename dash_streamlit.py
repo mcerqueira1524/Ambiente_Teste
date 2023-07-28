@@ -1248,7 +1248,7 @@ if check_password():
                 color_discrete_map= {'2022':'#EE2D67', '2023':'#8EC6B2'},
                 barmode='group',
                 text_auto=True,
-                category_orders={'Status da Inscrição':['Inscrito', 'Finalista', 'Menção Honrosa','Medalhista de Bronze','Medalhista de Prata','Medalhista de Ouro']},
+                category_orders={'Status da Inscrição':['Inscrições', 'Finalistas', 'Menções Honrosas','Medalhas de Bronze','Medalhas de Prata','Medalhas de Ouro']},
                 template = template_dash)
 
             fig_olimp_status.update_layout(
