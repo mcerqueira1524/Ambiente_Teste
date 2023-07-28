@@ -1226,8 +1226,7 @@ if check_password():
                 'yanchor': 'top'
             }
         )
-
-        fig_olimp_medalhistas.update_yaxes(visible=False)
+        fig_olimp_medalhistas.update_yaxes(visible=False, showticklabels=False)
         fig_olimp_medalhistas.update_traces(texttemplate= '%{y}%', textposition='inside',textfont_size=15)
         st.plotly_chart(fig_olimp_medalhistas,use_container_width=True)
 
