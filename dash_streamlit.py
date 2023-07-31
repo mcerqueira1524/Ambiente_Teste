@@ -1274,7 +1274,7 @@ if check_password():
         df_olimpiadas =  df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Não inscrito'] 
         df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Fui medalhista na olimpíada']
         df_olimpiadas = df_olimpiadas[(df_olimpiadas['Olimpíada'] == 'OBMEP - Olimpíada Brasileira de Matemática das Escolas Públicas') | (df_olimpiadas['Olimpíada'] == 'OBA - Olimpíada Brasileira de Astronomia')]
-        df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Inscritos']
+        df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Inscrito']
         
         #df['Concatenar'] = teste_grafico['Status da Inscrição'] +  teste_grafico['Ano'].astype(str)  +  teste_grafico['Olimpíada'] 
         df_olimpiadas["Quantidade"] = 0
