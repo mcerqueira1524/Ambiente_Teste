@@ -1295,7 +1295,6 @@ if check_password():
 
         fig_olimp_olimpiadas.update_layout(
             plot_bgcolor=bg_color_dash,
-            text_auto=True,
             title={
                 'text': "<b> STATUS DE INSCRIÇÃO POR OLÍMPIADA </b>",
                 'y':0.9,
