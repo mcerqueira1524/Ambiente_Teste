@@ -1295,7 +1295,7 @@ if check_password():
                                           insidetextanchor='start'  
                                           )
         fig_olimp_olimpiadas.update_layout(barmode="relative")
-
+        fig_olimp_olimpiadas(marker=dict(line=dict(width=0.6)))
 
         fig_olimp_olimpiadas.update_layout(
             plot_bgcolor=bg_color_dash,
