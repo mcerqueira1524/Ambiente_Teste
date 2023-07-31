@@ -1273,7 +1273,7 @@ if check_password():
         df_olimpiadas= df_selection_olimp_teste[['Status da Inscrição', 'Ano', 'Olimpíada']]
         df_olimpiadas =  df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Não inscrito'] 
         df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Fui medalhista na olimpíada']
-        df_olimpiadas =  df_olimpiadas[df_olimpiadas['Olimpíada'] == 'OBMEP - Olimpíada Brasileira de Matemática das Escolas Públicas']
+        df_olimpiadas = df_olimpiadas[(df_olimpiadas['Olimpíada'] == 'OBMEP - Olimpíada Brasileira de Matemática das Escolas Públicas') | (df_olimpiadas['Olimpíada'] == 'OBA - Olimpíada Brasileira de Astronomia')]
         #df['Concatenar'] = teste_grafico['Status da Inscrição'] +  teste_grafico['Ano'].astype(str)  +  teste_grafico['Olimpíada'] 
         df_olimpiadas["Quantidade"] = 0
         for index, row in df_olimpiadas.iterrows():
@@ -1302,7 +1302,7 @@ if check_password():
                 'xanchor': 'center',
                 'yanchor': 'top'
              }
-            )
+         )
         fig_olimp_olimpiadas.update_yaxes(visible=False)        
         st.plotly_chart(fig_olimp_olimpiadas,use_container_width=True)
 
