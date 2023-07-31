@@ -1266,6 +1266,37 @@ if check_password():
         )
             fig_olimp_status.update_yaxes(visible=False)
             st.plotly_chart(fig_olimp_status,use_container_width=True)
+        
+
+        #terceira linha
+        #tratamento da base
+        df_olimpiadas= df_selection_olimp_teste[['Status da Inscrição', 'Ano', 'Olimpíada']]
+        df_olimpiadas =  df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Não inscrito'] 
+        df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Fui medalhista na olimpíada']
+        df_olimpiadas =  df_olimpiadas[df_olimpiadas['Olimpíada'] == 'OBMEP - Olimpíada Brasileira de Matemática das Escolas Públicas']
+        #df['Concatenar'] = teste_grafico['Status da Inscrição'] +  teste_grafico['Ano'].astype(str)  +  teste_grafico['Olimpíada'] 
+        df_olimpiadas["Quantidade"] = 0
+        for index, row in df_olimpiadas.iterrows():
+            same_year_status = df_olimpiadas[(df_olimpiadas["Ano"] == row["Ano"]) & (df_olimpiadas["Status da Inscrição"] == row["Status da Inscrição"])]
+            count = same_year_status["Olimpíada"].value_counts().get(row["Olimpíada"], 0)
+            df_olimpiadas.at[index, "Quantidade"] = count
+            
+        df_olimpiadas['Concatenar'] = df_olimpiadas['Status da Inscrição'] +  df_olimpiadas['Ano'].astype(str)  +  df_olimpiadas['Olimpíada']
+        df_olimpiadas = df_olimpiadas.drop_duplicates()
+
+        fig_olimp_olimpiadas = go.Figure()
+
+        for status in df_olimpiadas['Status da Inscrição'].unique():
+            df_olimpiadas_filtro_legenda = df_olimpiadas[df_olimpiadas['Status da Inscrição'] == status]
+            x = [df_olimpiadas_filtro_legenda['Olimpíada'].tolist(), df_olimpiadas_filtro_legenda['Ano'].astype(str).tolist()]
+            fig_olimp_olimpiadas.add_bar(x=x, y=df_olimpiadas_filtro_legenda['Quantidade'], name=status)
+           
+        st.plotly_chart(fig_olimp_olimpiadas,use_container_width=True)
+
+
+
+
+            
     with tab3:
 
         df_alunos_medalhas = df_selection.loc[(df_selection['Me inscrevi e estou aguardando resultados'].notnull() & (df_selection['Me inscrevi e estou aguardando resultados'] != 0)& (df_selection['Me inscrevi e estou aguardando resultados'] != "-")) 
