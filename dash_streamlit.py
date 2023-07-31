@@ -1294,7 +1294,7 @@ if check_password():
             fig_olimp_olimpiadas.add_bar(x=x, y=df_olimpiadas_filtro_legenda['Quantidade'], name=status,
                                           text=df_olimpiadas_filtro_legenda['Quantidade'], 
                                           textposition='auto',    
-                                          insidetextanchor='start'  
+                                          insidetextanchor='middle'  
                                           )
             
         df_inscritos = df_olimpiadas[df_olimpiadas['Status da Inscrição'] == 'Inscrito']
