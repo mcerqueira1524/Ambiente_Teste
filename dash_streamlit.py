@@ -1291,6 +1291,20 @@ if check_password():
             x = [df_olimpiadas_filtro_legenda['Olimpíada'].tolist(), df_olimpiadas_filtro_legenda['Ano'].astype(str).tolist()]
             fig_olimp_olimpiadas.add_bar(x=x, y=df_olimpiadas_filtro_legenda['Quantidade'], name=status)
         fig_olimp_olimpiadas.update_layout(barmode="relative")
+
+
+        fig_olimp_olimpiadas.update_layout(
+            plot_bgcolor=bg_color_dash,
+            text_auto=True,
+            title={
+                'text': "<b> STATUS DE INSCRIÇÃO POR OLÍMPIADA </b>",
+                'y':0.9,
+                'x':0.5,
+                'xanchor': 'center',
+                'yanchor': 'top'
+             }
+            )
+        fig_olimp_olimpiadas.update_yaxes(visible=False)        
         st.plotly_chart(fig_olimp_olimpiadas,use_container_width=True)
 
 
