@@ -1274,17 +1274,17 @@ if check_password():
         df_olimpiadas =  df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Não inscrito'] 
         df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Fui medalhista na olimpíada']
         df_olimpiadas = df_olimpiadas[(df_olimpiadas['Olimpíada'] == 'OBMEP - Olimpíada Brasileira de Matemática das Escolas Públicas') | (df_olimpiadas['Olimpíada'] == 'OBA - Olimpíada Brasileira de Astronomia')]
-        df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Inscrito']
+        df_olimpiadas_filtro_inscritos = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Inscrito']
         
         #df['Concatenar'] = teste_grafico['Status da Inscrição'] +  teste_grafico['Ano'].astype(str)  +  teste_grafico['Olimpíada'] 
-        df_olimpiadas["Quantidade"] = 0
-        for index, row in df_olimpiadas.iterrows():
-            same_year_status = df_olimpiadas[(df_olimpiadas["Ano"] == row["Ano"]) & (df_olimpiadas["Status da Inscrição"] == row["Status da Inscrição"])]
+        df_olimpiadas_filtro_inscritos["Quantidade"] = 0
+        for index, row in df_olimpiadas_filtro_inscritos.iterrows():
+            same_year_status = df_olimpiadas_filtro_inscritos[(df_olimpiadas["Ano"] == row["Ano"]) & (df_olimpiadas_filtro_inscritos["Status da Inscrição"] == row["Status da Inscrição"])]
             count = same_year_status["Olimpíada"].value_counts().get(row["Olimpíada"], 0)
-            df_olimpiadas.at[index, "Quantidade"] = count
+            df_olimpiadas_filtro_inscritos.at[index, "Quantidade"] = count
             
-        df_olimpiadas['Concatenar'] = df_olimpiadas['Status da Inscrição'] +  df_olimpiadas['Ano'].astype(str)  +  df_olimpiadas['Olimpíada']
-        df_olimpiadas = df_olimpiadas.drop_duplicates()
+        df_olimpiadas_filtro_inscritos['Concatenar'] = df_olimpiadas_filtro_inscritos['Status da Inscrição'] +  df_olimpiadas_filtro_inscritos['Ano'].astype(str)  +  df_olimpiadas_filtro_inscritos['Olimpíada']
+        df_olimpiadas_filtro_inscritos = df_olimpiadas_filtro_inscritos.drop_duplicates()
 
         fig_olimp_olimpiadas = go.Figure()
 
@@ -1298,8 +1298,8 @@ if check_password():
                                           orientation='v' 
                                           )
 
-        df_inscritos = df_selection_olimp_teste[['Status da Inscrição', 'Ano', 'Olimpíada']]        
-        df_inscritos =  df_inscritos[df_inscritos['Status da Inscrição'] == 'Inscrito']
+              
+        df_inscritos =  df_olimpiadas[df_olimpiadas['Status da Inscrição'] == 'Inscrito']
         x_inscritos = [df_inscritos['Olimpíada'].tolist(), df_inscritos['Ano'].astype(str).tolist()]
         fig_olimp_olimpiadas.add_scatter(x=x_inscritos, y=df_inscritos['Quantidade'], mode='lines+markers', name='Inscritos')
 
