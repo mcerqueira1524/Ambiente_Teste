@@ -1296,8 +1296,6 @@ if check_password():
                                           )
         fig_olimp_olimpiadas.update_layout(barmode="relative")
         
-        largura_das_barras = 0.6
-        fig_olimp_olimpiadas(marker=dict(line=dict(width=largura_das_barras)))
         fig_olimp_olimpiadas.update_layout(
             plot_bgcolor=bg_color_dash,
             title={
