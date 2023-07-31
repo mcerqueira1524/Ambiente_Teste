@@ -1296,7 +1296,8 @@ if check_password():
                                           )
         fig_olimp_olimpiadas.update_layout(barmode="relative")
         
-
+        largura_das_barras = 0.6
+        fig_olimp_olimpiadas(marker=dict(line=dict(width=largura_das_barras)))
         fig_olimp_olimpiadas.update_layout(
             plot_bgcolor=bg_color_dash,
             title={
@@ -1307,7 +1308,7 @@ if check_password():
                 'yanchor': 'top'
              }
          )
-        fig_olimp_olimpiadas(marker=dict(line=dict(width=0.6)))
+
         fig_olimp_olimpiadas.update_yaxes(visible=False)        
         st.plotly_chart(fig_olimp_olimpiadas,use_container_width=True)
 
