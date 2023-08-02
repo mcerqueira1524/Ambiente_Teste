@@ -1289,10 +1289,10 @@ if check_password():
         fig_olimp_olimpiadas = go.Figure()
 
         for status in df_olimpiadas['Status da Inscrição'].unique():
-            df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] == status]
+            df_olimpiadas_filtro_legenda = df_olimpiadas[df_olimpiadas['Status da Inscrição'] == status]
             x = [df_olimpiadas['Olimpíada'].tolist(), df_olimpiadas['Ano'].astype(str).tolist()]
-            fig_olimp_olimpiadas.add_bar(x=x, y=df_olimpiadas['Quantidade'], name=status,
-                                          text=df_olimpiadas['Quantidade'], 
+            fig_olimp_olimpiadas.add_bar(x=x, y=df_olimpiadas_filtro_legenda['Quantidade'], name=status,
+                                          text=df_olimpiadas_filtro_legenda['Quantidade'], 
                                           textposition='auto',    
                                           insidetextanchor='start' ,
                                           orientation='v' 
