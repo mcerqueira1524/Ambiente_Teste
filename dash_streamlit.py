@@ -1274,7 +1274,11 @@ if check_password():
         df_olimpiadas =  df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Não inscrito'] 
         df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Fui medalhista na olimpíada']
         df_olimpiadas = df_olimpiadas[(df_olimpiadas['Olimpíada'] == 'OBMEP - Olimpíada Brasileira de Matemática das Escolas Públicas') | (df_olimpiadas['Olimpíada'] == 'OBA - Olimpíada Brasileira de Astronomia')]
-        df_olimpiadas = df_olimpiadas.sort_values(by=['Ano'])
+
+        
+        ordered_years = ['2022', '2023']  # Defina a ordem desejada dos anos
+        df_olimpiadas['Ano'] = pd.Categorical(df_olimpiadas['Ano'], categories=ordered_years, ordered=True)
+
         
         df_olimpiadas["Quantidade"] = 0
         
