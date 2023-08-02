@@ -1274,7 +1274,7 @@ if check_password():
         df_olimpiadas =  df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Não inscrito'] 
         df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Fui medalhista na olimpíada']
         df_olimpiadas = df_olimpiadas[(df_olimpiadas['Olimpíada'] == 'OBMEP - Olimpíada Brasileira de Matemática das Escolas Públicas') | (df_olimpiadas['Olimpíada'] == 'OBA - Olimpíada Brasileira de Astronomia')]
-
+        df_olimpiadas = df_olimpiadas.sort_values(by=['Ano'])
         
         df_olimpiadas["Quantidade"] = 0
         
@@ -1285,7 +1285,7 @@ if check_password():
             
         df_olimpiadas['Concatenar'] = df_olimpiadas['Status da Inscrição'] +  df_olimpiadas['Ano'].astype(str)  +  df_olimpiadas['Olimpíada']
         df_olimpiadas = df_olimpiadas.drop_duplicates()
-        df_olimpiadas = df_olimpiadas.sort_values(by=['Ano'])
+        
         df_olimpiadas_sem_inscritos = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Inscrito']
         
         fig_olimp_olimpiadas = go.Figure()
