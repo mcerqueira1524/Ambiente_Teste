@@ -1299,25 +1299,24 @@ if check_password():
                                           )
 
               
-        df_inscritos =  df_olimpiadas[df_olimpiadas['Status da Inscrição'] == 'Inscrito']
-        x_inscritos = [df_inscritos['Olimpíada'].tolist(), df_inscritos['Ano'].astype(str).tolist()]
-        fig_olimp_olimpiadas.add_scatter(x=x_inscritos, y=df_inscritos['Quantidade'], mode='lines+markers', name='Inscritos')
+        #df_inscritos =  df_olimpiadas[df_olimpiadas['Status da Inscrição'] == 'Inscrito']
+        #x_inscritos = [df_inscritos['Olimpíada'].tolist(), df_inscritos['Ano'].astype(str).tolist()]
+        #fig_olimp_olimpiadas.add_scatter(x=x_inscritos, y=df_inscritos['Quantidade'], mode='lines+markers', name='Inscritos')
 
-        fig_olimp_olimpiadas.update_layout(barmode="relative")
+        #fig_olimp_olimpiadas.update_layout(barmode="relative")
         
-        fig_olimp_olimpiadas.update_layout(
-            plot_bgcolor=bg_color_dash,
-            title={
-                'text': "<b> STATUS DE INSCRIÇÃO POR OLÍMPIADA </b>",
-                'y':0.9,
-                'x':0.5,
-                'xanchor': 'center',
-                'yanchor': 'top'
-             }
-         )
+        #fig_olimp_olimpiadas.update_layout(
+         #   plot_bgcolor=bg_color_dash,
+          #  title={
+           #     'text': "<b> STATUS DE INSCRIÇÃO POR OLÍMPIADA </b>",
+            ##   'x':0.5,
+              #  'xanchor': 'center',
+               # 'yanchor': 'top'
+             #}
+         #)
 
-        fig_olimp_olimpiadas.update_yaxes(visible=False)        
-        st.plotly_chart(fig_olimp_olimpiadas,use_container_width=True)
+        #fig_olimp_olimpiadas.update_yaxes(visible=False)        
+        #st.plotly_chart(fig_olimp_olimpiadas,use_container_width=True)
 
 
 
