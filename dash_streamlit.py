@@ -1276,8 +1276,8 @@ if check_password():
         df_olimpiadas = df_olimpiadas[(df_olimpiadas['Olimpíada'] == 'OBMEP - Olimpíada Brasileira de Matemática das Escolas Públicas') | (df_olimpiadas['Olimpíada'] == 'OBA - Olimpíada Brasileira de Astronomia')]
 
         
-        
         df_olimpiadas["Quantidade"] = 0
+        st.dataframe(df_olimpiadas)
         for index, row in df_olimpiadas.iterrows():
             same_year_status = df_olimpiadas[(df_olimpiadas["Ano"] == row["Ano"]) & (df_olimpiadas["Status da Inscrição"] == row["Status da Inscrição"])]
             count = same_year_status["Olimpíada"].value_counts().get(row["Olimpíada"], 0)
