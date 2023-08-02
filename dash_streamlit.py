@@ -1285,11 +1285,13 @@ if check_password():
             
         df_olimpiadas['Concatenar'] = df_olimpiadas['Status da Inscrição'] +  df_olimpiadas['Ano'].astype(str)  +  df_olimpiadas['Olimpíada']
         df_olimpiadas = df_olimpiadas.drop_duplicates()
-        st.dataframe(df_olimpiadas)
+        
+        df_olimpiadas_sem_inscritos = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Inscrito']
+        
         fig_olimp_olimpiadas = go.Figure()
 
-        for status in df_olimpiadas['Status da Inscrição'].unique():
-            df_olimpiadas_filtro_legenda = df_olimpiadas[df_olimpiadas['Status da Inscrição'] == status]
+        for status in df_olimpiadas_sem_inscritos['Status da Inscrição'].unique():
+            df_olimpiadas_filtro_legenda = df_olimpiadas_sem_inscritos[df_olimpiadas_sem_inscritos['Status da Inscrição'] == status]
             x = [df_olimpiadas_filtro_legenda['Olimpíada'].tolist(), df_olimpiadas_filtro_legenda['Ano'].astype(str).tolist()]
             fig_olimp_olimpiadas.add_bar(x=x, y=df_olimpiadas_filtro_legenda['Quantidade'], name=status,
                                           text=df_olimpiadas_filtro_legenda['Quantidade'], 
