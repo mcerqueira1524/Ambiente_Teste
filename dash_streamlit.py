@@ -1297,13 +1297,13 @@ if check_password():
                                           insidetextanchor='start' ,
                                           orientation='v' 
                                           )
+        fig_olimp_olimpiadas.update_layout(barmode="relative")
 
               
         #df_inscritos =  df_olimpiadas[df_olimpiadas['Status da Inscrição'] == 'Inscrito']
         #x_inscritos = [df_inscritos['Olimpíada'].tolist(), df_inscritos['Ano'].astype(str).tolist()]
         #fig_olimp_olimpiadas.add_scatter(x=x_inscritos, y=df_inscritos['Quantidade'], mode='lines+markers', name='Inscritos')
 
-        fig_olimp_olimpiadas.update_layout(barmode="relative")
         
         fig_olimp_olimpiadas.update_layout(
             plot_bgcolor=bg_color_dash,
