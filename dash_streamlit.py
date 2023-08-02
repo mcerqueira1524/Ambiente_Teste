@@ -1285,13 +1285,13 @@ if check_password():
             
         df_olimpiadas['Concatenar'] = df_olimpiadas['Status da Inscrição'] +  df_olimpiadas['Ano'].astype(str)  +  df_olimpiadas['Olimpíada']
         df_olimpiadas = df_olimpiadas.drop_duplicates()
-        
+        df_olimpiadas = df_olimpiadas.sort_values(by=['Ano'])
         df_olimpiadas_sem_inscritos = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Inscrito']
         
         fig_olimp_olimpiadas = go.Figure()
 
         st.dataframe(df_olimpiadas_sem_inscritos)
-        
+
 
         for status in df_olimpiadas_sem_inscritos['Status da Inscrição'].unique():
             df_olimpiadas_filtro_legenda = df_olimpiadas_sem_inscritos[df_olimpiadas_sem_inscritos['Status da Inscrição'] == status]
