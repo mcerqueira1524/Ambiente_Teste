@@ -1290,6 +1290,9 @@ if check_password():
         
         fig_olimp_olimpiadas = go.Figure()
 
+        st.dataframe(df_olimpiadas_sem_inscritos)
+        
+
         for status in df_olimpiadas_sem_inscritos['Status da Inscrição'].unique():
             df_olimpiadas_filtro_legenda = df_olimpiadas_sem_inscritos[df_olimpiadas_sem_inscritos['Status da Inscrição'] == status]
             x = [df_olimpiadas_filtro_legenda['Olimpíada'].tolist(), df_olimpiadas_filtro_legenda['Ano'].astype(str).tolist()]
