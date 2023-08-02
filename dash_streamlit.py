@@ -1277,7 +1277,7 @@ if check_password():
 
         
         df_olimpiadas["Quantidade"] = 0
-        st.dataframe(df_olimpiadas)
+        
         for index, row in df_olimpiadas.iterrows():
             same_year_status = df_olimpiadas[(df_olimpiadas["Ano"] == row["Ano"]) & (df_olimpiadas["Status da Inscrição"] == row["Status da Inscrição"])]
             count = same_year_status["Olimpíada"].value_counts().get(row["Olimpíada"], 0)
@@ -1285,7 +1285,7 @@ if check_password():
             
         df_olimpiadas['Concatenar'] = df_olimpiadas['Status da Inscrição'] +  df_olimpiadas['Ano'].astype(str)  +  df_olimpiadas['Olimpíada']
         df_olimpiadas = df_olimpiadas.drop_duplicates()
-
+        st.dataframe(df_olimpiadas)
         fig_olimp_olimpiadas = go.Figure()
 
         for status in df_olimpiadas['Status da Inscrição'].unique():
