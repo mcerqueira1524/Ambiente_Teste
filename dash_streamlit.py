@@ -1274,9 +1274,9 @@ if check_password():
         df_olimpiadas =  df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Não inscrito'] 
         df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Fui medalhista na olimpíada']
         df_olimpiadas = df_olimpiadas[(df_olimpiadas['Olimpíada'] == 'OBMEP - Olimpíada Brasileira de Matemática das Escolas Públicas') | (df_olimpiadas['Olimpíada'] == 'OBA - Olimpíada Brasileira de Astronomia')]
-        df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Inscrito']
+
         
-        #df['Concatenar'] = teste_grafico['Status da Inscrição'] +  teste_grafico['Ano'].astype(str)  +  teste_grafico['Olimpíada'] 
+        
         df_olimpiadas["Quantidade"] = 0
         for index, row in df_olimpiadas.iterrows():
             same_year_status = df_olimpiadas[(df_olimpiadas["Ano"] == row["Ano"]) & (df_olimpiadas["Status da Inscrição"] == row["Status da Inscrição"])]
@@ -1289,10 +1289,10 @@ if check_password():
         fig_olimp_olimpiadas = go.Figure()
 
         for status in df_olimpiadas['Status da Inscrição'].unique():
-            df_olimpiadas_filtro_legenda = df_olimpiadas[df_olimpiadas['Status da Inscrição'] == status]
-            x = [df_olimpiadas_filtro_legenda['Olimpíada'].tolist(), df_olimpiadas_filtro_legenda['Ano'].astype(str).tolist()]
-            fig_olimp_olimpiadas.add_bar(x=x, y=df_olimpiadas_filtro_legenda['Quantidade'], name=status,
-                                          text=df_olimpiadas_filtro_legenda['Quantidade'], 
+            df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] == status]
+            x = [df_olimpiadas['Olimpíada'].tolist(), df_olimpiadas['Ano'].astype(str).tolist()]
+            fig_olimp_olimpiadas.add_bar(x=x, y=df_olimpiadas['Quantidade'], name=status,
+                                          text=df_olimpiadas['Quantidade'], 
                                           textposition='auto',    
                                           insidetextanchor='start' ,
                                           orientation='v' 
