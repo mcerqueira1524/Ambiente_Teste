@@ -1275,7 +1275,7 @@ if check_password():
         df_olimpiadas = df_olimpiadas[df_olimpiadas['Status da Inscrição'] != 'Fui medalhista na olimpíada']
         df_olimpiadas = df_olimpiadas[(df_olimpiadas['Olimpíada'] == 'OBMEP - Olimpíada Brasileira de Matemática das Escolas Públicas') | (df_olimpiadas['Olimpíada'] == 'OBA - Olimpíada Brasileira de Astronomia')]
 
-        df_olimpiadas = df_olimpiadas.sort_values(['Ano'], ascendent = True)
+        df_olimpiadas = df_olimpiadas.sort_values(['Ano'], ascending = True)
 
         
         df_olimpiadas["Quantidade"] = 0
