@@ -1290,7 +1290,7 @@ if check_password():
 
         for status in df_olimpiadas['Status da Inscrição'].unique():
             df_olimpiadas_filtro_legenda = df_olimpiadas[df_olimpiadas['Status da Inscrição'] == status]
-            x = [df_olimpiadas['Olimpíada'].tolist(), df_olimpiadas['Ano'].astype(str).tolist()]
+            x = [df_olimpiadas_filtro_legenda['Olimpíada'].tolist(), df_olimpiadas_filtro_legenda['Ano'].astype(str).tolist()]
             fig_olimp_olimpiadas.add_bar(x=x, y=df_olimpiadas_filtro_legenda['Quantidade'], name=status,
                                           text=df_olimpiadas_filtro_legenda['Quantidade'], 
                                           textposition='auto',    
@@ -1300,9 +1300,9 @@ if check_password():
         fig_olimp_olimpiadas.update_layout(barmode="relative")
 
               
-        #df_inscritos =  df_olimpiadas[df_olimpiadas['Status da Inscrição'] == 'Inscrito']
-        #x_inscritos = [df_inscritos['Olimpíada'].tolist(), df_inscritos['Ano'].astype(str).tolist()]
-        #fig_olimp_olimpiadas.add_scatter(x=x_inscritos, y=df_inscritos['Quantidade'], mode='lines+markers', name='Inscritos')
+        df_inscritos =  df_olimpiadas[df_olimpiadas['Status da Inscrição'] == 'Inscrito']
+        x_inscritos = [df_inscritos['Olimpíada'].tolist(), df_inscritos['Ano'].astype(str).tolist()]
+        fig_olimp_olimpiadas.add_scatter(x=x_inscritos, y=df_inscritos['Quantidade'], mode='lines+markers', name='Inscritos')
 
         
         fig_olimp_olimpiadas.update_layout(
